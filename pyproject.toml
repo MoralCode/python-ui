@@ -13,8 +13,7 @@ authors = [
 ]
 description = "A Python encapsulation library for User interaction for reuse across various scripts"
 readme = "README.md"
-license = "GPL-2.0-only"
-license-files = ["LICEN[CS]E.*"]
+license = {file = "LICENSE.md"}
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python"
