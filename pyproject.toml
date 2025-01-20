@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-ui"
+version = "0.0.1"
+dependencies = [
+]
+requires-python = ">=3.8"
+authors = [
+  {name = "Adrian Edwards" }
+]
+description = "A Python encapsulation library for User interaction for reuse across various scripts"
+readme = "README.md"
+license = "GPL-2.0-only"
+license-files = ["LICEN[CS]E.*"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+
