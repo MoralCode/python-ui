@@ -41,6 +41,39 @@ class Terminal:
         elif answer is False or answer.startswith("n"):
             return False
 
+    @staticmethod  
+    def single_select(prompt:str, choices=None, default=None, require_explicit_answer=True):
+        """Create a terminal interface for a single-select, multiple-choice option, similar to a radio button
+
+        Args:
+            prompt (str): the prompt to display to provide context on the options.
+            choices (list[str], optional): the list of choices to offer. Defaults to None.
+            default (any, optional): the default value used in cases where no option was selected. Defaults to None.
+            require_explicit_answer (bool, optional): require explicit selection of at least one item from the list, not the default. Defaults to True.
+
+        Returns:
+            str: the selected value
+        """
+
+        if choices is None:
+            choices = []
+
+        # enumerate will start from 1
+        options = "\n".join(f"{i}) {v}" for i,v in enumerate(choices))
+
+        full_prompt = f"{prompt}:\n{options}"
+
+        answer = Terminal._prompt_until_response(prompt, default=default, require_explicit_answer=require_explicit_answer)
+        answer = answer.lower()
+        try:
+            answer = int(answer)
+        except Exception as e:
+            print("parsing exception :: " + e)
+        
+        # convert back to an index
+        answer -= 1
+
+        return options[answer]
 
 
 class CSV:
