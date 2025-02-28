@@ -1,7 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 import csv
-from helpers import save_to_csv
+from .helpers import save_to_csv
 class Terminal:
 
     @staticmethod    
