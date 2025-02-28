@@ -63,7 +63,7 @@ class Terminal:
 
         full_prompt = f"{prompt}:\n{options}"
 
-        answer = Terminal._prompt_until_response(prompt, default=default, require_explicit_answer=require_explicit_answer)
+        answer = Terminal._prompt_until_response(full_prompt, default=default, require_explicit_answer=require_explicit_answer)
         answer = answer.lower()
         try:
             answer = int(answer)
