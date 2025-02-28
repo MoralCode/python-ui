@@ -5,6 +5,21 @@ from helpers import save_to_csv
 class Terminal:
 
     @staticmethod    
+    def _prompt_until_response(prompt, default=True, require_explicit_answer=False):
+        
+        answer = None
+        while answer is None:
+            response = input(prompt)
+
+            if len(response) >= 1:
+                return response
+            elif require_explicit_answer:
+                print("A response is required.")
+            else:
+                return default
+
+
+    @staticmethod    
     def boolean_choice(prompt, default=True, add_directions=True, require_explicit_answer=False):
 
         # TODO: possiby refactor the user interaction into a library that
@@ -19,23 +34,12 @@ class Terminal:
         if add_directions:
             prompt += prompt_ending
 
-        answer = None
-        while answer is None:
-            response = input(prompt)
-
-            response = response.lower()
-            if response == "":
-                answer = default
-            elif response == "y":
-                answer = True
-            elif response == "n":
-                answer = False
-            
-            if require_explicit_answer and answer is None:
-                print("A response is required.")
-
-            if answer is not None:
-                return answer
+        answer = Terminal._prompt_until_response(prompt, default=default, require_explicit_answer=require_explicit_answer)
+        answer = answer.lower()
+        if answer is True or answer.startswith("y"):
+            return True
+        elif answer is False or answer.startswith("n"):
+            return False
 
 
 
