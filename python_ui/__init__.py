@@ -35,10 +35,9 @@ class Terminal:
             prompt += prompt_ending
 
         answer = Terminal._prompt_until_response(prompt, default=default, require_explicit_answer=require_explicit_answer)
-        answer = answer.lower()
-        if answer is True or answer.startswith("y"):
+        if answer is True or answer.lower().startswith("y"):
             return True
-        elif answer is False or answer.startswith("n"):
+        elif answer is False or answer.lower().startswith("n"):
             return False
 
     @staticmethod  
